@@ -1,0 +1,69 @@
+# Python / environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+*.egg-info/
+build/
+dist/
+
+# Editors / operating system
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Dataset: keep metadata files at data/ root, ignore image splits and caches
+data/train/
+data/valid/
+data/test/
+data/raw/
+data/processed/
+data/**/*.cache
+
+# Generated runs, plots, predictions and experiment artifacts
+outputs/**
+!outputs/.gitkeep
+experiments/**/results/
+
+# Model weights and serialized ML artifacts
+*.pt
+*.pth
+*.ckpt
+*.weights
+*.onnx
+*.engine
+*.tflite
+*.pb
+*.h5
+*.keras
+*.joblib
+*.pkl
+*.pickle
+*.npz
+
+# Training logs / profiler output
+runs/
+wandb/
+mlruns/
+tensorboard/
+events.out.tfevents.*
+*.prof
+
+# Course/reference documents kept outside the project repository
+40_121036 - Xu ly anh va Thi giac may tinh (1).docx
+Computer_Vision 25.pdf
+document-download.txt

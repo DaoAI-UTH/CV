@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['code']
+
+roboflow:
+  workspace: public-workspace-n6wxn
+  project: container-character-codes
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/public-workspace-n6wxn/container-character-codes/dataset/3

@@ -35,8 +35,6 @@ data/processed/
 data/**/*.cache
 
 # Generated runs, plots, predictions and experiment artifacts
-outputs/**
-!outputs/.gitkeep
 experiments/**/results/
 
 # Model weights and serialized ML artifacts

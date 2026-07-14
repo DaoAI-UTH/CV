@@ -1,0 +1,68 @@
+{
+  "selected_preprocessing": {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 2
+    },
+    "exact_count_rate": 0.13432835820895522,
+    "count_mae": 4.985074626865671
+  },
+  "knn_training": {
+    "train_rois_total": 2376,
+    "train_rois_accepted": 170,
+    "characters": 1653
+  },
+  "knn_validation_sweep": [
+    {
+      "split": "valid",
+      "k": 1,
+      "images": 67,
+      "segmentation_exact_rate": 0.13432835820895522,
+      "character_accuracy_conditional": 0.20454545454545456,
+      "exact_code_accuracy_end_to_end": 0.0,
+      "exact_codes": 0
+    },
+    {
+      "split": "valid",
+      "k": 3,
+      "images": 67,
+      "segmentation_exact_rate": 0.13432835820895522,
+      "character_accuracy_conditional": 0.13636363636363635,
+      "exact_code_accuracy_end_to_end": 0.0,
+      "exact_codes": 0
+    },
+    {
+      "split": "valid",
+      "k": 5,
+      "images": 67,
+      "segmentation_exact_rate": 0.13432835820895522,
+      "character_accuracy_conditional": 0.1590909090909091,
+      "exact_code_accuracy_end_to_end": 0.0,
+      "exact_codes": 0
+    },
+    {
+      "split": "valid",
+      "k": 7,
+      "images": 67,
+      "segmentation_exact_rate": 0.13432835820895522,
+      "character_accuracy_conditional": 0.1590909090909091,
+      "exact_code_accuracy_end_to_end": 0.0,
+      "exact_codes": 0
+    }
+  ],
+  "selected_k": 1,
+  "test": {
+    "split": "test",
+    "k": 1,
+    "images": 35,
+    "segmentation_exact_rate": 0.08571428571428572,
+    "character_accuracy_conditional": 0.3,
+    "exact_code_accuracy_end_to_end": 0.0,
+    "exact_codes": 0
+  }
+}

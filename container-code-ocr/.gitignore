@@ -34,9 +34,6 @@ data/raw/
 data/processed/
 data/**/*.cache
 
-# Generated runs, plots, predictions and experiment artifacts
-experiments/**/results/
-
 # Model weights and serialized ML artifacts
 *.pt
 *.pth

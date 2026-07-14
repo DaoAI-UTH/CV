@@ -1,0 +1,626 @@
+[
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 1
+    },
+    "exact_count_rate": 0.08955223880597014,
+    "count_mae": 4.835820895522388
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 2
+    },
+    "exact_count_rate": 0.08955223880597014,
+    "count_mae": 4.91044776119403
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 1
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.835820895522388
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 1
+    },
+    "exact_count_rate": 0.029850746268656716,
+    "count_mae": 5.940298507462686
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 2
+    },
+    "exact_count_rate": 0.014925373134328358,
+    "count_mae": 5.940298507462686
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 2
+    },
+    "exact_count_rate": 0.07462686567164178,
+    "count_mae": 5.925373134328358
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 1
+    },
+    "exact_count_rate": 0.13432835820895522,
+    "count_mae": 5.029850746268656
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 2
+    },
+    "exact_count_rate": 0.11940298507462686,
+    "count_mae": 5.029850746268656
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 1
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 6.029850746268656
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 1
+    },
+    "exact_count_rate": 0.04477611940298507,
+    "count_mae": 5.970149253731344
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 2
+    },
+    "exact_count_rate": 0.014925373134328358,
+    "count_mae": 6.0
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 2
+    },
+    "exact_count_rate": 0.04477611940298507,
+    "count_mae": 6.08955223880597
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 1
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.417910447761194
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 2
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.2388059701492535
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 1
+    },
+    "exact_count_rate": 0.07462686567164178,
+    "count_mae": 5.835820895522388
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 1
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 6.029850746268656
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 2
+    },
+    "exact_count_rate": 0.07462686567164178,
+    "count_mae": 5.492537313432836
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 2
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.582089552238806
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 1
+    },
+    "exact_count_rate": 0.08955223880597014,
+    "count_mae": 5.358208955223881
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 2
+    },
+    "exact_count_rate": 0.07462686567164178,
+    "count_mae": 5.298507462686567
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 1
+    },
+    "exact_count_rate": 0.029850746268656716,
+    "count_mae": 5.8059701492537314
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 1
+    },
+    "exact_count_rate": 0.04477611940298507,
+    "count_mae": 5.880597014925373
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 2
+    },
+    "exact_count_rate": 0.08955223880597014,
+    "count_mae": 5.522388059701493
+  },
+  {
+    "config": {
+      "target_height": 128,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 2
+    },
+    "exact_count_rate": 0.07462686567164178,
+    "count_mae": 5.552238805970149
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 1
+    },
+    "exact_count_rate": 0.07462686567164178,
+    "count_mae": 4.865671641791045
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 2
+    },
+    "exact_count_rate": 0.08955223880597014,
+    "count_mae": 4.835820895522388
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 1
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.850746268656716
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 1
+    },
+    "exact_count_rate": 0.014925373134328358,
+    "count_mae": 5.91044776119403
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 2
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.82089552238806
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 2
+    },
+    "exact_count_rate": 0.04477611940298507,
+    "count_mae": 5.835820895522388
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 1
+    },
+    "exact_count_rate": 0.07462686567164178,
+    "count_mae": 4.925373134328358
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 2
+    },
+    "exact_count_rate": 0.07462686567164178,
+    "count_mae": 5.0
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 1
+    },
+    "exact_count_rate": 0.0,
+    "count_mae": 6.014925373134329
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 1
+    },
+    "exact_count_rate": 0.07462686567164178,
+    "count_mae": 5.791044776119403
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 2
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.865671641791045
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": false,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 2
+    },
+    "exact_count_rate": 0.07462686567164178,
+    "count_mae": 5.776119402985074
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 1
+    },
+    "exact_count_rate": 0.11940298507462686,
+    "count_mae": 5.134328358208955
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 2
+    },
+    "exact_count_rate": 0.13432835820895522,
+    "count_mae": 4.985074626865671
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 1
+    },
+    "exact_count_rate": 0.08955223880597014,
+    "count_mae": 5.701492537313433
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 1
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.7164179104477615
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 2
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.656716417910448
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 1,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 2
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.492537313432836
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 1
+    },
+    "exact_count_rate": 0.13432835820895522,
+    "count_mae": 5.104477611940299
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "otsu",
+      "block": 0,
+      "c": 0,
+      "morph": 2
+    },
+    "exact_count_rate": 0.13432835820895522,
+    "count_mae": 4.985074626865671
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 1
+    },
+    "exact_count_rate": 0.029850746268656716,
+    "count_mae": 5.895522388059701
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 1
+    },
+    "exact_count_rate": 0.05970149253731343,
+    "count_mae": 5.492537313432836
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 19,
+      "c": 7,
+      "morph": 2
+    },
+    "exact_count_rate": 0.1044776119402985,
+    "count_mae": 5.656716417910448
+  },
+  {
+    "config": {
+      "target_height": 192,
+      "clahe": true,
+      "blur": 3,
+      "threshold": "adaptive",
+      "block": 31,
+      "c": 11,
+      "morph": 2
+    },
+    "exact_count_rate": 0.04477611940298507,
+    "count_mae": 5.611940298507463
+  }
+]

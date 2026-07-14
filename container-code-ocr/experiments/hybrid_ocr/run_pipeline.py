@@ -131,17 +131,62 @@ def train_knn(root: Path, cfg: dict) -> tuple[cv2.ml.KNearest, list[str], dict]:
     return model, labels, {"train_rois_total":total, "train_rois_accepted":accepted, "characters":len(features)}
 
 
-def evaluate_ocr(root: Path, split: str, cfg: dict, model, labels: list[str], k: int) -> dict:
-    chars_ok=chars_total=exact_codes=segmented_codes=total=0
+def allowed_label_ids(code_length: int, position: int) -> set[int]:
+    """Valid character classes for container-code layouts in this dataset."""
+    letter_count = 4 if code_length in (8, 10, 11) else 3
+    return set(range(10, 36)) if position < letter_count else set(range(10))
+
+
+def recognize_knn(chars, model, labels, k: int, weighted: bool, format_aware: bool) -> str:
+    if not chars:
+        return ""
+    samples = np.asarray([hog(char) for char in chars], dtype=np.float32)
+    _, results, neighbours, distances = model.findNearest(samples, k)
+    if not weighted and not format_aware:
+        return "".join(labels[int(index)] for index in results.ravel())
+    prediction = []
+    for position, (fallback, row_labels, row_distances) in enumerate(
+        zip(results.ravel(), neighbours, distances, strict=True)
+    ):
+        valid = allowed_label_ids(len(chars), position) if format_aware else set(range(len(labels)))
+        votes = {}
+        for label_id, distance in zip(row_labels.astype(int), row_distances, strict=True):
+            if label_id in valid:
+                weight = 1.0 / (float(distance) + 1e-6) if weighted else 1.0
+                votes[label_id] = votes.get(label_id, 0.0) + weight
+        prediction.append(max(votes, key=votes.get) if votes else int(fallback))
+    return "".join(labels[index] for index in prediction)
+
+
+def edit_distance(reference: str, prediction: str) -> int:
+    previous = list(range(len(prediction) + 1))
+    for row, expected in enumerate(reference, start=1):
+        current = [row]
+        for column, actual in enumerate(prediction, start=1):
+            current.append(min(current[-1] + 1, previous[column] + 1,
+                               previous[column - 1] + (expected != actual)))
+        previous = current
+    return previous[-1]
+
+
+def evaluate_ocr(root: Path, split: str, cfg: dict, model, labels: list[str], k: int,
+                 weighted: bool = False, format_aware: bool = False) -> dict:
+    chars_ok=chars_total=exact_codes=segmented_codes=total=total_edits=total_gt_chars=0
     for _, code, roi in split_samples(root, split):
         total += 1; chars, _ = segment(preprocess(roi, cfg))
-        if len(chars) != len(code):
-            continue
-        segmented_codes += 1; samples=np.asarray([hog(char) for char in chars]); _, result, _, _=model.findNearest(samples, k)
-        prediction="".join(labels[int(index)] for index in result.ravel()); exact_codes += prediction == code
-        chars_ok += sum(a==b for a,b in zip(prediction, code, strict=True)); chars_total += len(code)
-    return {"split":split,"k":k,"images":total,"segmentation_exact_rate":segmented_codes/total if total else 0,"character_accuracy_conditional":chars_ok/chars_total if chars_total else 0,"exact_code_accuracy_end_to_end":exact_codes/total if total else 0,"exact_codes":exact_codes}
-
+        prediction = recognize_knn(chars, model, labels, k, weighted, format_aware)
+        if len(chars) == len(code):
+            segmented_codes += 1
+            chars_ok += sum(a == b for a, b in zip(prediction, code, strict=True))
+            chars_total += len(code)
+        exact_codes += prediction == code
+        total_edits += edit_distance(code, prediction); total_gt_chars += len(code)
+    cer = total_edits / total_gt_chars if total_gt_chars else 1.0
+    return {"split":split,"k":k,"weighted":weighted,"format_aware":format_aware,
+            "images":total,"segmentation_exact_rate":segmented_codes/total if total else 0,
+            "character_accuracy_conditional":chars_ok/chars_total if chars_total else 0,
+            "character_error_rate":cer,"sequence_accuracy":max(0.0,1.0-cer),
+            "exact_code_accuracy_end_to_end":exact_codes/total if total else 0,"exact_codes":exact_codes}
 
 def save_stage_figure(path: Path, code: str, stages: dict, boxes: list, output: Path) -> None:
     segmented=cv2.cvtColor(stages["normalized"],cv2.COLOR_BGR2RGB)
@@ -167,8 +212,12 @@ def main() -> None:
     root=Path(args.data); output=Path(args.output); output.mkdir(parents=True,exist_ok=True)
     detector_comparison(Path("experiments/classical_roi/results/comparison.json"),output)
     best, rows=tune(root); (output/"preprocessing_sweep.json").write_text(json.dumps(rows,indent=2)); cfg=best["config"]
-    model,labels,training=train_knn(root,cfg); sweeps=[evaluate_ocr(root,"valid",cfg,model,labels,k) for k in (1,3,5,7)]; best_k=max(sweeps,key=lambda x:x["exact_code_accuracy_end_to_end"])["k"]; test=evaluate_ocr(root,"test",cfg,model,labels,best_k)
-    summary={"selected_preprocessing":best,"knn_training":training,"knn_validation_sweep":sweeps,"selected_k":best_k,"test":test}; (output/"ocr_metrics.json").write_text(json.dumps(summary,indent=2))
+    model,labels,training=train_knn(root,cfg)
+    candidates=itertools.product((1,3,5,7,11,15),(False,True),(False,True))
+    sweeps=[evaluate_ocr(root,"valid",cfg,model,labels,k,w,f) for k,w,f in candidates]
+    selected=max(sweeps,key=lambda x:(x["sequence_accuracy"],x["character_accuracy_conditional"]))
+    test=evaluate_ocr(root,"test",cfg,model,labels,selected["k"],selected["weighted"],selected["format_aware"])
+    summary={"selected_preprocessing":best,"knn_training":training,"knn_validation_sweep":sweeps,"selected_classifier":{key:selected[key] for key in ("k","weighted","format_aware")},"test":test}; (output/"ocr_metrics.json").write_text(json.dumps(summary,indent=2))
     np.savez_compressed(output/"knn_hog.npz",labels=np.asarray(labels))
     # Intermediate figures use actual YOLO predictions, not ground-truth crops.
     detector=YOLO(args.model)

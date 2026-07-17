@@ -7,6 +7,8 @@ from typing import Any
 import cv2
 import numpy as np
 
+from container_ocr.affine import AffinePrototypeRecognizer
+
 
 @dataclass
 class Detection:
@@ -18,7 +20,14 @@ class Detection:
 class ContainerCodePipeline:
     def __init__(self, config: dict[str, Any]):
         self.config = config
-        self.knn, self.labels = self._load_knn(config["paths"]["model"])
+        self.recognition_method = config["recognition"].get("method", "knn")
+        self.knn, self.labels, self.affine_recognizer = None, [], None
+        if self.recognition_method == "affine_prototype":
+            self.affine_recognizer = AffinePrototypeRecognizer.load(config["paths"]["model"])
+        elif self.recognition_method == "knn":
+            self.knn, self.labels = self._load_knn(config["paths"]["model"])
+        else:
+            raise ValueError(f"Unknown recognition method: {self.recognition_method}")
 
     def process_image(self, image_path: str | Path) -> dict[str, Any]:
         image = cv2.imread(str(image_path))
@@ -133,6 +142,8 @@ class ContainerCodePipeline:
         return chars
 
     def recognize(self, chars: list[np.ndarray]) -> str:
+        if self.recognition_method == "affine_prototype":
+            return self.affine_recognizer.predict(chars) if self.affine_recognizer else ""
         if self.knn is None or not chars:
             return ""
 

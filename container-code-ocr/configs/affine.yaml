@@ -1,0 +1,42 @@
+project:
+  name: container-code-ocr-affine
+  seed: 42
+
+paths:
+  raw_images: data/raw
+  char_train_dir: data/processed/chars
+  model: outputs/affine_prototypes.npz
+  output_dir: outputs/affine_demo
+
+preprocess:
+  hsv_value_channel: true
+  morph_kernel: 17
+  gaussian_kernel: 5
+  adaptive_block: 19
+  adaptive_c: 9
+  canny_low: 60
+  canny_high: 180
+
+detection:
+  close_kernel_long: 35
+  close_kernel_short: 5
+  close_iterations: 2
+  min_area_ratio: 0.0008
+  max_area_ratio: 0.30
+  min_aspect: 1.2
+  max_aspect: 14.0
+  padding: 8
+  max_candidates: 5
+
+segmentation:
+  min_char_area_ratio: 0.002
+  min_char_height_ratio: 0.28
+  max_char_height_ratio: 0.98
+  min_char_aspect: 0.12
+  max_char_aspect: 1.20
+  char_width: 20
+  char_height: 30
+
+recognition:
+  method: affine_prototype
+  alphabet: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"

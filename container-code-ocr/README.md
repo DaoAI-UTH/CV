@@ -350,6 +350,42 @@ Hybrid thử CLAHE/Otsu/adaptive threshold/morphology, connected components, HOG
 
 **Giới hạn:** implementation hiện tại tune/train/đánh giá OCR trên ROI từ **ground-truth YOLO labels**. Model YOLO qua `--model` dùng sinh hình intermediate trên một số ảnh test. Do đó `ocr_metrics.json` đo OCR khi ROI đã đúng, chưa phải accuracy end-to-end YOLO nối trực tiếp OCR.
 
+### 11.3 Affine normalization và classifier không KNN
+
+Affine là phép chuẩn hoá hình học, không phải bộ phân lớp. Module mới làm bốn bước trên
+mỗi ký tự: chuẩn polarity → crop/scale giữ tỷ lệ → ước lượng skew bằng moment
+`s = mu11 / mu02` → warp `x' = x - s(y-cy)` và đưa centroid về tâm.
+
+Thực nghiệm so sánh ba nhánh trên cùng group split:
+
+1. KNN trên pixel gốc.
+2. Affine-normalized pixel + KNN, để đo riêng tác dụng của affine.
+3. Affine-normalized pixel + nearest class prototype, bỏ KNN và chỉ giữ một vector
+   trung bình cho mỗi lớp.
+
+Chạy lại toàn bộ thực nghiệm:
+
+```bash
+PYTHONPATH=src python3 experiments/affine_recognition/run_experiment.py
+```
+
+Kết quả, CSV và năm hình được lưu tại `experiments/affine_recognition/results/`.
+Nhật ký tự sinh tại `experiments/affine_recognition/THUC_NGHIEM_AFFINE.md`.
+
+Train model affine-prototype bằng toàn bộ tập ký tự để chạy pipeline:
+
+```bash
+PYTHONPATH=src python3 -m container_ocr.train_affine --config configs/affine.yaml
+
+PYTHONPATH=src python3 -m container_ocr.cli \
+  data/test/images/example.jpg \
+  --config configs/affine.yaml \
+  --save-stages
+```
+
+`affine_steps.png` thể hiện riêng từng bước biến đổi ký tự. Tùy chọn
+`--save-stages` của CLI vẫn lưu các bước detect ROI toàn ảnh như pipeline cũ.
+
 ## 12. Chạy test
 
 ```bash
